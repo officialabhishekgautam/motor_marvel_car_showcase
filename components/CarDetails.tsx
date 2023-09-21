@@ -2,8 +2,8 @@
 
 import { Fragment } from 'react';
 import Image from 'next/image';
-import { Dialog, Transition } from '@headlessui/react';
 
+import { Dialog, Transition } from '@headlessui/react';
 import { CarProps } from '@/types';
 import { generateCarImageUrl } from '@/utils';
 
@@ -14,8 +14,7 @@ interface CarDetailsProps {
   car: CarProps;
 }
 
-const CarDetails = ( { isOpen, closeModal, car }: CarDetailsProps) => {
-  return (
+const CarDetails = ( { isOpen, closeModal, car }: CarDetailsProps) => (
     <>
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as='div' className="relative z-10" onClose={closeModal}>
@@ -83,7 +82,7 @@ const CarDetails = ( { isOpen, closeModal, car }: CarDetailsProps) => {
                     { Object.entries(car).map(([key,value]) => (
                       <div className='flex justify-between gap-5 w-full text-right' key={key}>
                         <h4 className='text-grey capitalize'>{key.split("_").join(" ")}</h4>
-                        <p>{value}</p>
+                        <p className='text-black-100 font-semibold'>{value}</p>
                       </div>
                     ))}
                   </div>
@@ -97,7 +96,6 @@ const CarDetails = ( { isOpen, closeModal, car }: CarDetailsProps) => {
         </Dialog>
       </Transition>
     </>
-  )
-}
+  );
 
 export default CarDetails

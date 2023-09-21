@@ -2,10 +2,9 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-
+import { calculateCarRent, generateCarImageUrl } from '@/utils';
 import { CarProps } from '@/types';
 import CustomButton from './CustomButton';
-import { calculateCarRent, generateCarImageUrl } from '@/utils';
 import CarDetails from './CarDetails';
 
 interface CarCardProps {
@@ -26,12 +25,12 @@ const CarCard = ({ car }: CarCardProps) => {
                 {make} {model}
             </h2>
         </div>
-        <p className='flex mt-6 text-[32px] font-extrabold'>
-            <span className='self-start text-[14px] font-semibold'>
+        <p className='flex mt-6 text-[32px] leading-[38px]  font-extrabold'>
+            <span className='self-start text-[14px] leading-[17px] font-semibold'>
                 ₹
             </span>
             {carRent}
-            <span className='self-end text-[14px] font-semibold'>
+            <span className='self-end text-[14px] leading-[17px] font-semibold'>
                 /day
             </span>
         </p>
@@ -44,7 +43,7 @@ const CarCard = ({ car }: CarCardProps) => {
         <div className='flex group-hover:invisible w-full justify-between text-gray'>
             <div className='flex flex-col justify-center items-center gap-2'>
                 <Image src='/steering-wheel.svg' width={20} height={20} alt='steering wheel'/>
-                <p className='text-[14px]'>
+                <p className='text-[14px]  leading-[17px]'>
                     {transmission === 'a' ? 'Automatic' : 'Manual'}
                 </p>
             </div>
@@ -66,7 +65,7 @@ const CarCard = ({ car }: CarCardProps) => {
             <CustomButton
             title='View More'
             containerStyles='w-full py-[16px] rounded-full bg-primary-blue'
-            textstyles="text-white text-[14px] leading-[17px] font-bold"
+            textStyles="text-white text-[14px] leading-[17px] font-bold"
             rightIcon='/right-arrow.svg'
             handleClick={() => setIsOpen(true)}
             />
